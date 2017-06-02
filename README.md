@@ -1,0 +1,2 @@
+# Inventory_CapgeminiCoding
+Inventory Management Application
