@@ -1,15 +1,23 @@
 
 
-# Inventory
+# Inventory Application
 
 
+# Running the application:
 
-## Usage
+The application runs on port 3000
 
+For normal User, signup is provided. 
+There is only one admin in the system. the admin credentials are 
+userId: admin
+password: 123456
+
+The databsae dump is provided consisting of two tables: Users and Products. 
+Database password can be changed in mysql.js file under routes folder. 
 
 
 ## Developing
-
+Developed using Node.js, MySQL, express and Angular.js
 
 
 ### Tools
