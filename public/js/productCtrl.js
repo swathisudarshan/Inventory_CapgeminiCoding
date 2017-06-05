@@ -21,6 +21,30 @@ var inventory= angular.module('app',[]);
 
 	 }; //Working
 	 
+		$scope.changeProduct = function()
+		{
+			console.log("Entering Change product");
+			$http({
+				method: 'POST',
+				url: '/modifyProducts',
+				data: {
+					"productId" : $scope.productId,
+					"productName" : $scope.productName,
+					"productPrice" : $scope.productPrice,
+					"productQuantity" : $scope.productQuantity,
+					"modelNumber" : $scope.modelNumber
+					}
+			}).success(function(data){
+				if(data)
+				{
+					console.log("Response is :" + JSON.stringify(data));
+					console.log("Success");
+				}
+			}).error(function(err){
+				console.log(err);
+			});
+		} //Working
+	 	 
 		$scope.products = {};
 		$scope.displayProducts = function(){
 			console.log("inside displayProducts function");
@@ -98,14 +122,10 @@ var inventory= angular.module('app',[]);
 						}).error(function(error) {
 								console.log(error);
 						});
-						//window.location.assign("/updateProduct");
 				}
 			}).error(function(err){
 				console.log(err);
-			});
-			
-			
-			
+			});	
 		}
 
 		$scope.formDetails = {};
@@ -129,30 +149,6 @@ var inventory= angular.module('app',[]);
 				console.log(err);
 			});
 		}
-		
-		$scope.changeProduct = function()
-		{
-			console.log("Entering Change product");
-			$http({
-				method: 'POST',
-				url: '/modifyProducts',
-				data: {
-					"productId" : $scope.productId,
-					"productName" : $scope.productName,
-					"productPrice" : $scope.productPrice,
-					"productQuantity" : $scope.productQuantity,
-					"modelNumber" : $scope.modelNumber
-					}
-			}).success(function(data){
-				if(data)
-				{
-					console.log("Response is :" + JSON.stringify(data));
-					console.log("Success");
-				}
-			}).error(function(err){
-				console.log(err);
-			});
-		} //Working
 		
 		$scope.checkoutProductA = function(product)
 		{

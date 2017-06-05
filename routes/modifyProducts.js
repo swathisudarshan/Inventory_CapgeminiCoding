@@ -1,6 +1,7 @@
 var mysql = require("./mysql");
 
 function modifyProducts(req,response){
+	console.log("Inside Modify Products");
 	var productId = req.param("productId");
 	var price = req.param("productPrice");
 	var quantity = req.param("productQuantity");
