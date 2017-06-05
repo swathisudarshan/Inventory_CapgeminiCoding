@@ -25,9 +25,7 @@ function signupUser(req,response){
 		}
 		else{
 				console.log("query done");
-				//callback(err,results);
 				json_responses.status = 200;
-				//json_responses.data = res;
 				console.log(json_responses);
 				response.send(json_responses);
 		}
@@ -52,7 +50,6 @@ function validateUserLogin(req,response){
 		}
 		else{
 				console.log("query done");
-				//callback(err,results);
 				json_responses.status = 200;
 				json_responses.data = res;
 				console.log(json_responses);
@@ -78,7 +75,6 @@ function validateAdminLogin(req,response){
 		}
 		else{
 				console.log("query done");
-				//callback(err,results);
 				json_responses.status = 200;
 				json_responses.data = res;
 				console.log(json_responses);

@@ -18,3 +18,7 @@ exports.logout = function(req,res){
 exports.adminLogin = function(req,res){
 	res.render("adminLogin");
 };
+
+exports.displaynewProduct = function(req,res){
+	res.render("addProduct");
+};

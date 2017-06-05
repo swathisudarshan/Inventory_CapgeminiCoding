@@ -13,20 +13,10 @@ var inventory= angular.module('app',[]);
 			}).success(function(data) {
 				if (data.status == 400) {
 					console.log("Error in adding product");
-					//$scope.invalid_signup = true;
-					//$scope.valid_signup = false;
-					//$scope.unexpected_error_signup = true;
 				} else {
-//					$scope.invalid_signup = false;
-//					$scope.valid_signup = true;
-//					$scope.unexpected_error_signup = true;
 					console.log("Success in adding product");
-					//window.location.assign("/addProduct");
 				}
 			}).error(function(error) {
-//				$scope.invalid_signup = true;
-//				$scope.valid_signup = true;
-//				$scope.unexpected_error_signup = false;
 			});
 
 	 }; //Working
@@ -69,36 +59,58 @@ var inventory= angular.module('app',[]);
 			});
 		} //Working
 		
-		$scope.product;
+		//$scope.product;
 		$scope.modifyProduct = function(product){
-			$scope.product = product;
-			window.location.assign("/updateProduct");
+			
+			console.log("ProductId is: "+ product.productId);
+			$http({
+				method: 'POST',
+				url: '/displayProductDetails',
+				data: {"productId" : product.productId}
+			}).success(function(data){
+				if(data)
+				{
+						console.log("Response is :" + JSON.stringify(data));
+						console.log("Success");
+						$scope.formDetails = data.product;
+						console.log("value of $scope from product controller " + JSON.stringify($scope.formDetails));
+						console.log($scope.formDetails[0].productId);
+						console.log($scope.formDetails[0].productName);
+						$http({
+							method : "POST",
+							url : '/storeProductInfo',
+							data : {
+								"productId" : $scope.formDetails[0].productId,
+								"productName" : $scope.formDetails[0].productName,
+								"productQuantity" : $scope.formDetails[0].productQuantity,
+								"price" : $scope.formDetails[0].productPrice,
+								"modelNumber" : $scope.formDetails[0].modelNumber
+							}
+						}).success(function(data) {
+							//checking the response data for statusCode
+							if (data.statusCode == 401) {
+								console.log("error in storing sessions");
+							}
+							else
+								//Making a get call to the '/redirectToHomepage' API
+								window.location.assign("/updateProduct");
+								
+						}).error(function(error) {
+								console.log(error);
+						});
+						//window.location.assign("/updateProduct");
+				}
+			}).error(function(err){
+				console.log(err);
+			});
+			
+			
+			
 		}
-//		$scope.formDetails = {};
-//		$scope.modifyProduct = function(product){
-//			$http({
-//				method: 'POST',
-//				url: '/displayProductDetails',
-//				data: {"productId" : product.productId}
-//			}).success(function(data){
-//				if(data)
-//				{
-//						console.log("Response is :" + JSON.stringify(data));
-//						console.log("Success");
-//						$scope.formDetails = data.product;
-//						console.log("value of $scope from product controller " + JSON.stringify($scope.formDetails));
-//						console.log($scope.formDetails[0].productId);
-//						console.log($scope.formDetails[0].productName);
-//						window.location.assign("/updateProduct");
-//				}
-//			}).error(function(err){
-//				console.log(err);
-//			});
-//		}
-		
+
 		$scope.formDetails = {};
-		$scope.displayProductDetail = function(){
-			console.log("ProductId is: "+$scope.product.productId);
+		$scope.displayProductDetail = function(product){
+			console.log("ProductId is: "+ product.productId);
 			$http({
 				method: 'POST',
 				url: '/displayProductDetails',
@@ -112,12 +124,35 @@ var inventory= angular.module('app',[]);
 						console.log("value of $scope from product controller " + JSON.stringify($scope.formDetails));
 						console.log($scope.formDetails[0].productId);
 						console.log($scope.formDetails[0].productName);
-						//window.location.assign("/updateProduct");
 				}
 			}).error(function(err){
 				console.log(err);
 			});
 		}
+		
+		$scope.changeProduct = function()
+		{
+			console.log("Entering Change product");
+			$http({
+				method: 'POST',
+				url: '/modifyProducts',
+				data: {
+					"productId" : $scope.productId,
+					"productName" : $scope.productName,
+					"productPrice" : $scope.productPrice,
+					"productQuantity" : $scope.productQuantity,
+					"modelNumber" : $scope.modelNumber
+					}
+			}).success(function(data){
+				if(data)
+				{
+					console.log("Response is :" + JSON.stringify(data));
+					console.log("Success");
+				}
+			}).error(function(err){
+				console.log(err);
+			});
+		} //Working
 		
 		$scope.checkoutProductA = function(product)
 		{

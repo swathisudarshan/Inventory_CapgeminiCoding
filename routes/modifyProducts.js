@@ -1,9 +1,10 @@
 var mysql = require("./mysql");
 
 function modifyProducts(req,response){
-	var price = 10.99;
-	var quantity = 3;
-	var productId = 1;
+	var productId = req.param("productId");
+	var price = req.param("productPrice");
+	var quantity = req.param("productQuantity");
+	var productId = req.param("productId");
 	var json_responses = {};	
 	var query = "UPDATE products SET productQuantity = "+quantity+" and productPrice = "+price+" where productId = "+productId; 
 	console.log(query);
@@ -34,7 +35,6 @@ function displayProducts(req,response){
 		console.log(json_responses);
 		response.send(json_responses);
 		},500)
-	//res.render('updateProduct');
 }
 
 function getProductDetails(productId){
@@ -58,9 +58,36 @@ function getProductDetails(productId){
 }
 
 function updateProduct(req,res){
-	res.render("updateProduct");
+	res.render("updateProduct",{"productId":req.session.productId , "productName":req.session.productName, "productQuantity":req.session.productQuantity, "price":req.session.price, "modelNumber":req.session.modelNumber});
 }
 
+
+function storeProductInfo(req,res) {
+	
+	var productId = req.param("productId");
+	var productName = req.param("productName"); 
+	var productQuantity = req.param("productQuantity"); 
+	var price = req.param("price"); 
+	var modelNumber = req.param("modelNumber"); 
+	
+	var json_responses = {};
+
+	req.session.productId = productId;
+	req.session.productName = productName;
+	req.session.productQuantity = productQuantity;
+	req.session.price = price;
+	req.session.modelNumber = modelNumber;
+	
+	console.log("******************");
+	console.log(req.session.productId);
+	
+	json_responses.statusCode = 200;
+	res.send(json_responses);	
+}
+
+
+
+exports.storeProductInfo = storeProductInfo;
 exports.updateProduct = updateProduct;
 exports.modifyProducts = modifyProducts;
 exports.displayProducts = displayProducts;
