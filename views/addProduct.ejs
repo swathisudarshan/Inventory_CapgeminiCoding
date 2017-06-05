@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>    	
+	<title> Add Product </title>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" />
+    	<link rel='stylesheet' href='/stylesheets/style.css' />
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.js"></script>
+   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   		
+   		<!--CUSTOM ANGULAR-->
+   		<script type="text/javascript"src="/js/productCtrl.js"></script>
+   		
+   		 
+  </head>
+  <body ng-controller="productCtrl">
+  <div class="wrapper">
+
+    <header class="main-header">
+      
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+    
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+         
+        </button>
+         <!--  <a class="navbar-brand" href="/"> 
+        <h5> SEISMIC </h5>  -->
+        <!--  <img class="img-responsive" style="position:relative; bottom:20px;" src="/logo.png"></a>  -->  
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="page-scroll">Home</a></li>
+          <li><a href="/listProductsA" class="page-scroll">List Products</a></li>
+          <li><a href="#" class="page-scroll">Add Product</a></li>
+         
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      
+    	
+    </div><!-- /.container-fluid -->
+  </nav>
+      
+    
+    </header>
+    
+    <!-- Left side column. contains the logo and sidebar -->
+        
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      
+      <!-- Main content -->
+      <div>
+		
+  	
+
+  	<div class="hold-transition skin-blue sidebar-mini">
+  	  <div>
+  	    <section class="content">
+  		<div class="row">
+  			<div class="col-lg-4 col-xs-4">
+  			</div>
+  			<div class="col-lg-6 col-xs-6">
+  				<h1> ENTER PRODUCT INFORMATION </h1>
+  				<br>
+  			</div>
+  			<div class="col-lg-2 col-xs-2">
+  			</div>
+  		</div>
+  		<form>
+  	      <div class="row ">
+  		  <section>
+  		  <div class="col-lg-3 col-xs-3">
+  		  </div>
+  		  		<div class="col-lg-2 col-xs-2">
+  				<label>Product Name</label> 							
+  			</div>
+  			<div class="col-lg-4 col-xs-4">
+  				<input class="form-control" type="text" id="productName" name="productName" placeholder="Product Name" ng-model="productName" />												
+  			</div>
+  			</section>
+  			</div>		
+  		 
+  		    <hr/>
+  			<div class="row">
+  			<div class="col-lg-3 col-xs-3">
+  		  </div>
+  			<div class="col-lg-2 col-xs-1">
+  				<label> Product Price </label> 									
+  			</div>
+  			<div class="col-lg-4 col-xs-4">
+  				<input class="form-control" type="text" id="productPrice" name="productPrice" placeholder="Product Price" ng-model="productPrice" />
+  			</div>	
+  			</div>
+  		
+  			 <hr/>
+  			 
+  			 <div class="row">
+  			 	<div class="col-lg-3 col-xs-3">
+  			 	</div>
+  			 	<div class="col-lg-2 col-xs-2">
+  			 		<label>Product Quantity</label> 									
+  			 	</div>
+  				<div class="col-lg-4 col-xs-4">
+  				<input class="form-control" type="text" id="productQuantity" name="productQuantity" placeholder="Product Quantity" ng-model="productQuantity" />
+  				</div>
+  		</div>
+  		<hr/>
+  		
+  		 <div class="row">
+  		 	<div class="col-lg-3 col-xs-3">
+  		 	</div>
+  		 	<div class="col-lg-2 col-xs-2">
+  		 		<label>Model Number</label> 									
+  		 	</div>
+  			<div class="col-lg-4 col-xs-4">
+  				<input class="form-control" type="text" id="modelNumber" name="modelNumber" placeholder="Model Number" ng-model="modelNumber"/>
+  			</div>
+  	</div>
+  	<hr/>
+
+  	  	<br>
+  	
+  	<div class="row">
+
+  			<div class="col-lg-5 col-xs-5">
+  			</div>
+  			
+  			<div class="col-lg-4 col-xs-4">
+  				<input type="submit" class="btn btn-primary" value="Add Product" ng-click="addProduct()" on-click="clearForm()" style="width:50%"></input>
+  			</div>
+  			<div class="col-lg-4 col-xs-4">
+  			</div>
+  		</div>
+  		</form>
+  	<hr/>
+  			 
+  	</section>		 
+  		</div>
+  	</div>
+  	</div>  
+		
+  		  <div>  		    
+  		 </div>
+  		    </div>
+  		        </div>
+  		    </div>
+</div>
+    
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    
+   </body>
+  </html>

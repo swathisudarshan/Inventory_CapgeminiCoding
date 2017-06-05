@@ -1,0 +1,128 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Update Product </title>
+<base href="/">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<!--CUSTOM ANGULAR-->
+	<script type="text/javascript"src="/js/productCtrl.js"></script>
+
+
+</head>
+
+<body ng-controller ="productCtrl" ng-init="displayProductDetail()">	
+
+<div class="wrapper">
+
+<header class="main-header">
+
+</header>
+
+<!-- Left side column. contains the logo and sidebar -->
+    
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  
+  <!-- Main content -->
+  <div>
+	<div class="hold-transition skin-blue sidebar-mini">
+	  <div>
+	    <section class="content">
+		<div class="row">
+			<div class="col-lg-4 col-xs-4">
+			</div>
+			<div class="col-lg-6 col-xs-6">
+				<h1> PRODUCT DETAILS </h1>
+				<br>
+			</div>
+			<div class="col-lg-2 col-xs-2">
+			</div>
+		</div>
+		<form>
+	      <div class="row ">
+		  <section>
+		  <div class="col-lg-3 col-xs-3">
+		  </div>
+		  		<div class="col-lg-2 col-xs-2">
+				<label>Product Name</label> 							
+			</div>
+			<div class="col-lg-4 col-xs-4">
+			<input class="form-control" type="text" id="productName" name="productName" placeholder="Product Name" ng-model="formDetails[0].productName" required  />												
+			</div>
+			</section>
+			</div>		
+		 
+		    <hr/>
+			<div class="row">
+			<div class="col-lg-3 col-xs-3">
+		  </div>
+			<div class="col-lg-2 col-xs-1">
+				<label> Product Price </label> 									
+			</div>
+			<div class="col-lg-4 col-xs-4">
+			<input class="form-control" type="text" id="productPrice" name="productPrice" placeholder="Product Price" ng-model="formDetails[0].productPrice" required />
+			</div>	
+			</div>
+		
+			 <hr/>
+			 
+			 <div class="row">
+			 	<div class="col-lg-3 col-xs-3">
+			 	</div>
+			 	<div class="col-lg-2 col-xs-2">
+			 		<label>Product Quantity</label> 									
+			 	</div>
+				<div class="col-lg-4 col-xs-4">
+				<input class="form-control" type="text" id="productQuantity" name="productQuantity" placeholder="Product Quantity" ng-model="formDetails[0].productQuantity" required />
+				</div>
+		</div>
+		<hr/>
+		
+		 <div class="row">
+		 	<div class="col-lg-3 col-xs-3">
+		 	</div>
+		 	<div class="col-lg-2 col-xs-2">
+		 		<label>Model Number</label> 									
+		 	</div>
+			<div class="col-lg-4 col-xs-4">
+			<input class="form-control" type="text" id="modelNumber" name="modelNumber" placeholder="Model Number" ng-model="formDetails[0].modelNumber" required />
+			</div>
+	</div>
+	<hr/>
+
+	  	<br>
+	
+	<div class="row">
+
+			<div class="col-lg-5 col-xs-5">
+			</div>
+			
+			<div class="col-lg-4 col-xs-4">
+			<input type="submit" class="btn btn-primary" value="Update" ng-click="updateProduct(formDetails)" style="width:50%"></input>
+			</div>
+			<div class="col-lg-4 col-xs-4">
+			</div>
+		</div>
+		</form>
+	<hr/>
+			 
+	</section>		 
+		</div>
+	</div>
+	</div>  
+	
+		  <div>  		    
+		 </div>
+		    </div>
+		        </div>
+		    </div>
+</div>
+
+
+</body>
+</html>

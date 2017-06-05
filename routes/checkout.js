@@ -1,7 +1,6 @@
 var mysql = require("./mysql");
 
-//Soft deleting the products in the database.
-function removeProducts (req,response){
+function checkoutProducts (req,response){
 	var json_responses = {};
 	var parameter = req.param("productId");
 	//var params = "";
@@ -11,7 +10,7 @@ function removeProducts (req,response){
 //	}
 //	var parameter = params.substring(0, (params.length-1));
 //	
-	var query = "UPDATE products set DELETED = \"Y\" WHERE productId IN ("+parameter+")";
+	var query = "UPDATE products set productQuantity = (productQuantity-1) WHERE productId IN ("+parameter+")";
 	console.log(query);
 	
 	mysql.fetchData(function(err, res) {
@@ -31,4 +30,4 @@ function removeProducts (req,response){
 	},query);
 }
 
-exports.removeProducts = removeProducts;
+exports.checkoutProducts = checkoutProducts;

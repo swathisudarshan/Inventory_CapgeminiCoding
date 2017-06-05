@@ -1,12 +1,13 @@
 var mysql = require("./mysql");
 
-function addProduct(req, res)
+function addProduct(req, response)
 {
 	var json_responses = {};
 	var table = "products";
-	var productName = "Kitchen Towel";
-	var productQuantity = 10;
-	var productPrice = 5;
+	var productName = req.param("productName");
+	var productQuantity = req.param("productQuantity");
+	var productPrice = req.param("productPrice");
+	var modelNumber = req.param("modelNumber");
 	(function() {
 	    Date.prototype.toYMD = Date_toYMD;
 	    function Date_toYMD() {
@@ -24,14 +25,14 @@ function addProduct(req, res)
 	    }
 	})();
 	
-	//	var query = "INSERT INTO "+table+" () values"
 	var date = new Date();
 	var str = date.toYMD();
 	
-	var query ="insert into products(productName,productQuantity ,productPrice, addDate ,deleted) values(" +
+	var query ="insert into products(productName,productQuantity ,productPrice, modelNumber, addDate ,deleted) values(" +
 	"\""+ productName +"\"," +
 	productQuantity + ", " +
 	productPrice + ", " +
+	"\""+modelNumber+"\", " +
 	"\"" + str +"\"," +
 	"\"N\");";
 	
@@ -41,7 +42,7 @@ function addProduct(req, res)
 			console.log("error in query");
 			json_responses.status = 400;
 			console.log(json_responses);
-			//res.send(json_responses);
+			response.send(json_responses);
 		}
 		else{
 				console.log("query done");
@@ -49,9 +50,15 @@ function addProduct(req, res)
 				json_responses.status = 200;
 				//json_responses.data = res;
 				console.log(json_responses);
-				//res.send(json_responses);
+				response.send(json_responses);
 		}
-	},query);
-	
+	},query);	
 }
+
+function displayAddProduct(req,response)
+{
+	response.render(addProduct);
+}
+
+exports.displayAddProduct = displayAddProduct;
 exports.addProduct = addProduct;
